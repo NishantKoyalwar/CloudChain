@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Image } from "react-bootstrap";
+var CryptoJS = require("crypto-js");
+
 //import "./Display.css"
 
 const Display = ({Contract,account})=>{
@@ -13,14 +16,16 @@ const Display = ({Contract,account})=>{
         const otherAddress = document.querySelector(".address").value;
         
         if(otherAddress){
-            dataArray =  await Contract.display(account)
+            dataArray =  await Contract.display(otherAddress)
             
         }else{
             dataArray = await  Contract.display(account)
         }
+
+
        
        
-        console.log(dataArray)
+       
 
             const isEmpty = Object.keys(dataArray).length===0;
             if(!isEmpty){
@@ -28,17 +33,19 @@ const Display = ({Contract,account})=>{
                 const str_arr = str.split(",")
                 console.log(str_arr)
                 const images = str_arr.map((item,i)=>{
+                    if(item.length===152){
+                        var bytes  = CryptoJS.AES.decrypt(item.toString(), '@Nishu');
+                    var originalText = bytes.toString(CryptoJS.enc.Utf8);
                     return(
-                        <a href={item} key={i} target="_blank">
-                            <img
-                            key={i}
-                            src={item}
-                            alt="new"
-                            className="image-list">
-
-                            </img>
-                        </a>
+                        <Image src={originalText} fluid/>
                     )
+                }else{
+                    return(
+                        <Image src={item} fluid/>
+                    )
+
+                }
+                    
                 })
             setData(images)
             }else{

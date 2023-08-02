@@ -127,10 +127,8 @@ async function main() {
   
   const contract = await hre.ethers.getContractAt(abi,address)
 
-  //const display = await contract.display("0x70997970C51812dc3A010C7d01b50e0d17dc79C8")
-
-    //const output = await display.toString()
-    const output = await contract.greet()
+  
+    const output = await contract.display(0xe8F5D65a9D6bD1A678F0d3c8ADe684F27AEB2FBd)
     
     console.log(output)
 

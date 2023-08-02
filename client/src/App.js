@@ -67,7 +67,7 @@
 
        function FileUploadLoad(){
         return (
-          <FileUpload account={account} provider={provider} Contract={Contract}></FileUpload>
+          <FileUpload account={account} Contract={Contract}></FileUpload>
         )
       }
 
