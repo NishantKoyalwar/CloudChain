@@ -38,7 +38,7 @@
           setAccount(address);
           
           
-        const contractAddress = "0xeA759e027bcD22F1148bA059FF3b65D4F238E879" 
+        const contractAddress = "0x036334F7dF61E989FA912Eecf9d9c7E13fFE93fb" 
 
           const getContract =  new ethers.Contract(
             contractAddress,
