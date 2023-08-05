@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import './FileUpload.css';
 var CryptoJS = require("crypto-js");
-const JWT = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJiOWU1YzFiZS0yMGI2LTRiYjYtYTNjNi0zZmI2ZjdmZDRhNWMiLCJlbWFpbCI6Im5pc2hhbnRrb3lhbHdhckBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6IkZSQTEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX0seyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlLCJzdGF0dXMiOiJBQ1RJVkUifSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiMWMxMGRjNjI2NDEzZWZiY2JlZWUiLCJzY29wZWRLZXlTZWNyZXQiOiIyZDE0ODFmODY2OTQzMGNjZmEyMTFmZGMwOTBkZDZmOGFlYzFkNGU3NzE1ZGMxNTRlNDg5YjRiOTFjMTdmZTNjIiwiaWF0IjoxNjg5Nzk4NjAyfQ.pvN4DIE5VYSepHj5Wgmac1yczJxb8dCVPTTOu0bsr8E`
+const JWT = `enter your pinata JWT here`
 const FileUpload =  ({Contract,account})=>{
     const [File,setFile] = useState(null);
     const [fileName,setFileName] = useState("No File Selected Yet")
@@ -23,7 +23,6 @@ const FileUpload =  ({Contract,account})=>{
                     }
                 });
                 const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`
-                console.log(ImgHash)
                 var cipherText = CryptoJS.AES.encrypt(ImgHash,'@Nishu').toString() //encryption
                 Contract.add(account,cipherText)
                 alert("Image Uploaded Successfully")

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Image } from "react-bootstrap";
+import "./Display.css"
 var CryptoJS = require("crypto-js");
 
-//import "./Display.css"
+
 
 const Display = ({Contract,account})=>{
     const [data,setData] = useState("")
@@ -21,13 +22,7 @@ const Display = ({Contract,account})=>{
         }else{
             dataArray = await  Contract.display(account)
         }
-
-
-       
-       
-       
-
-            const isEmpty = Object.keys(dataArray).length===0;
+        const isEmpty = Object.keys(dataArray).length===0;
             if(!isEmpty){
                 const str = dataArray.toString();
                 const str_arr = str.split(",")
@@ -54,11 +49,12 @@ const Display = ({Contract,account})=>{
     }
 
     return <>
-        <div className="image-list">{data}</div>\
+        <div className="image-list" ></div>
         <input type="text" placeholder="Enter address" className="address"></input>
         <button className="center button" onClick={getdata}>
             GetData
         </button>
+        {data}
     </>
 }
 

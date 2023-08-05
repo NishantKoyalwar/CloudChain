@@ -1,23 +1,17 @@
-  import logo from './logo.svg';
   import './App.css';
   import FileUpload from './components/FileUpload'
   import Upload from './artifacts/contracts/Upload.sol/Upload.json'
   import {useState,useEffect} from "react"
-  import modal from './components/modal'
-  import { Button,Nav,Alert,Offcanvas } from 'react-bootstrap';
+  import {Nav } from 'react-bootstrap';
   import 'bootstrap/dist/css/bootstrap.min.css';
   import Display from './components/Display';
-  import { BrowserRouter,Switch,Route,Link } from 'react-router-dom';
-  const { ethers,ethereum } = require("ethers")
-  //useState is a hook which takes an argument which is initial value are returns an array two values i.e. the current state and function to update it
-  //useEffect is a hook which allow you to perform functional components it could be data fetching etc.it runs after every render by default(u can also change this to ,render when values are changed)
-
+  import { BrowserRouter,Switch,Route,Link} from 'react-router-dom';
+  const { ethers } = require("ethers")
+  
   function App() {
     
     const [account,setAccount] = useState("")
     const [Contract,setContract] = useState(null)
-    const [provider,setprovider] = useState(null)
-    const [modalOpen,setModalOpen] = useState(false)
   
     useEffect(()=>{
       const provider = new ethers.BrowserProvider(window.ethereum);
@@ -38,22 +32,14 @@
           setAccount(address);
           
           
-        const contractAddress = "0x036334F7dF61E989FA912Eecf9d9c7E13fFE93fb" 
+        const contractAddress = "enter contract address here" 
 
           const getContract =  new ethers.Contract(
             contractAddress,
             Upload.abi,
             signer
           )
-          
-
-        
-          //console.log(getContract)
-          //console.log(address)
-        
-        
           setContract(getContract);
-          setprovider(provider);
           }catch(error){
             console.error("error requesting accounts",error)
           }
@@ -94,12 +80,14 @@
     
     return (
       <div className="App">
-        <BrowserRouter>
-        <Nav variant="tabs" defaultActiveKey="/home">
-        <Nav.Item>
-          <Nav.Link as={Link} to = "/home">Home </Nav.Link>
+
+        
+          <BrowserRouter>
+        <Nav variant="tabs" defaultActiveKey="/home" >
+        <Nav.Item className='link' >
+          <Nav.Link as={Link} to = "/home" >Home </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item className='link'>
           <Nav.Link as={Link} to = "/files" >Files</Nav.Link>
         </Nav.Item>
         <Nav.Item></Nav.Item>
@@ -107,12 +95,15 @@
         <Switch>
             <Route path="/home">
             <Home />
-            </Route>
+            </Route>  
             <Route path="/files">
             <Files />
             </Route>
         </Switch>
-        </BrowserRouter>
+        </BrowserRouter>  
+       
+        
+        
       </div>
     );
   }

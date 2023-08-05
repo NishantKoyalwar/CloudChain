@@ -16,7 +16,6 @@ contract Upload {
     return "hello";
   }
     function display(address _user) external view returns(string[] memory){
-     
       return value[_user];
   }
 
