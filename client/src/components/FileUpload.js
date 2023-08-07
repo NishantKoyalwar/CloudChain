@@ -23,7 +23,7 @@ const FileUpload =  ({Contract,account})=>{
                     }
                 });
                 const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`
-                var cipherText = CryptoJS.AES.encrypt(ImgHash,'@Nishu').toString() //encryption
+                var cipherText = CryptoJS.AES.encrypt(ImgHash,'set the encryption key here').toString() //encryption
                 Contract.add(account,cipherText)
                 alert("Image Uploaded Successfully")
                setFileName("")

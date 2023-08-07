@@ -29,7 +29,7 @@ const Display = ({Contract,account})=>{
                 console.log(str_arr)
                 const images = str_arr.map((item,i)=>{
                     if(item.length===152){
-                        var bytes  = CryptoJS.AES.decrypt(item.toString(), '@Nishu');
+                        var bytes  = CryptoJS.AES.decrypt(item.toString(), 'enter encrytion key');
                     var originalText = bytes.toString(CryptoJS.enc.Utf8);
                     return(
                         <Image src={originalText} fluid/>

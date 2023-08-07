@@ -32,7 +32,7 @@
           setAccount(address);
           
           
-        const contractAddress = "enter contract address here" 
+        const contractAddress = 'enter contract address here' 
 
           const getContract =  new ethers.Contract(
             contractAddress,
